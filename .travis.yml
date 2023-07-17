@@ -1,0 +1,11 @@
+#we need to have a super user thats why we use sudo
+sudo: required
+#service what service we need we need to define
+services:
+  - docker
+#before install what we need to do we need to build the image.
+before_install:
+  - docker build -t rahat7288/docker-react -f Dockerfile.dev .
+#running script to check the git updates and run the test case
+script:
+  - docker run rahat/docker-react npm run test -- --coverage
